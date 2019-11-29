@@ -9,30 +9,79 @@ const match = {
   hit: 0
 };
 
+function printJudgement(judgement) {
+  const text = document.querySelector("#jsComment");
+
+  text.innerHTML = judgement;
+}
+
+function printCount() {
+  const strikeCount = document.querySelector("#jsCountStrike");
+  strikeCount.innerHTML = match.strike;
+
+  const ballCount = document.querySelector("#jsCountBall");
+  ballCount.innerHTML = match.ball;
+
+  const outCount = document.querySelector("#jsCountOut");
+  outCount.innerHTML = match.out;
+}
+
 match.makeJudgement = function() {
   let randomNumber = Math.floor(Math.random() * 100 + 1);
+  let judgement = "";
 
   if (randomNumber % 2 === 0) {
+    judgement = "Strike!";
+    printJudgement(judgement);
     this.strike++;
   } else {
+    judegement = "Ball!";
+    printJudgement(judgement);
     this.ball++;
   }
 };
 
 match.isOutOrHit = function() {
+  let judgement = "";
+
   if (this.strike === 3) {
     this.out++;
+    judgement = "아웃! 다음 타자가 타석에 입장 했습니다.";
+    printJudgement(judgement);
     this.strike = 0;
   }
 
   if (this.ball === 4) {
     this.hit++;
+    judgement = "안타! 다음 타자가 타석에 입장 했습니다.";
+    printJudgement(judgement);
     this.ball = 0;
   }
 };
 
+function printFinalResult() {
+  const text = document.querySelector("#jsComment");
+  const gameover = "Game Over";
+  text.innerHTML = gameover;
+
+  const statsList = document.querySelector("#jsStatsList");
+  statsList.style.display = "none";
+
+  const finalResult = document.querySelector("#jsFinalResult");
+  finalResult.style.display = "block";
+
+  const hitCount = document.querySelector("#jsCountHit");
+  hitCount.innerHTML = match.hit;
+}
+
 function main() {
-  for (let i = 0; i < 10; i++) {
+  while (true) {
+    printCount();
+    if (match.out === 3) {
+      printFinalResult();
+      console.log("Game Over");
+      break;
+    }
     match.makeJudgement();
     console.log("strike : " + match.strike, "ball : " + match.ball);
     match.isOutOrHit();
