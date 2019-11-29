@@ -9,12 +9,6 @@ const match = {
   hit: 0
 };
 
-function printJudgement(judgement) {
-  const text = document.querySelector("#jsComment");
-
-  text.innerHTML = judgement;
-}
-
 function printCount() {
   const strikeCount = document.querySelector("#jsCountStrike");
   strikeCount.innerHTML = match.strike;
@@ -26,6 +20,12 @@ function printCount() {
   outCount.innerHTML = match.out;
 }
 
+function printJudgement(judgement) {
+  const comment = document.querySelector("#jsComment");
+
+  comment.innerHTML = judgement;
+}
+
 match.makeJudgement = function() {
   let randomNumber = Math.floor(Math.random() * 100 + 1);
   let judgement = "";
@@ -35,7 +35,7 @@ match.makeJudgement = function() {
     printJudgement(judgement);
     this.strike++;
   } else {
-    judegement = "Ball!";
+    judgement = "Ball!";
     printJudgement(judgement);
     this.ball++;
   }
@@ -60,9 +60,9 @@ match.isOutOrHit = function() {
 };
 
 function printFinalResult() {
-  const text = document.querySelector("#jsComment");
+  const comment = document.querySelector("#jsComment");
   const gameover = "Game Over";
-  text.innerHTML = gameover;
+  comment.innerHTML = gameover;
 
   const statsList = document.querySelector("#jsStatsList");
   statsList.style.display = "none";
@@ -74,18 +74,53 @@ function printFinalResult() {
   hitCount.innerHTML = match.hit;
 }
 
-function main() {
-  while (true) {
-    printCount();
-    if (match.out === 3) {
-      printFinalResult();
-      console.log("Game Over");
-      break;
-    }
-    match.makeJudgement();
-    console.log("strike : " + match.strike, "ball : " + match.ball);
-    match.isOutOrHit();
+function playGame(e) {
+  match.makeJudgement();
+  match.isOutOrHit();
+  printCount();
+  if (match.out === 3) {
+    const resetBtn = document.querySelector("#jsResetBtn");
+
+    printFinalResult();
+    e.target.style.display = "none";
+    resetBtn.style.display = "inline-block";
   }
+  console.log("strike : " + match.strike, "ball : " + match.ball);
+}
+
+function initGame() {
+  match.strike = 0;
+  match.ball = 0;
+  match.out = 0;
+  match.hit = 0;
+
+  const comment = document.querySelector("#jsComment");
+  comment.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
+}
+
+function resetGame(e) {
+  initGame();
+
+  const playBtn = document.querySelector("#jsPlayBtn");
+  e.target.style.display = "none";
+  playBtn.style.display = "inline-block";
+  playBtn.addEventListener("click", playGame);
+
+  const statsList = document.querySelector("#jsStatsList");
+  statsList.style.display = "block";
+
+  const finalResult = document.querySelector("#jsFinalResult");
+  finalResult.style.display = "none";
+
+  printCount();
+}
+
+function main() {
+  const playBtn = document.querySelector("#jsPlayBtn");
+  const resetBtn = document.querySelector("#jsResetBtn");
+
+  playBtn.addEventListener("click", playGame);
+  resetBtn.addEventListener("click", resetGame);
 }
 
 main();
