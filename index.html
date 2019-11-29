@@ -13,22 +13,17 @@
       </h1>
     </div>
     <div class="contents">
-      <p class="contents__enter-batter" id="jsNewBatter">
-        첫 번째 타자가 타석에 입장 했습니다.
+      <p class="contents__comment" id="jsComment">
+        첫 번째 타자가 타석에 입장했습니다.
       </p>
-      <p class="contents__judge">판정 입력</p>
-      <div class="contents__stats">
-        <ul class="contents__stats-count">
-          <li class="stats-count__strike" id="jsCountStrike">0</li>
-          <li class="stats-count__ball" id="jsCountBall">0</li>
-          <li class="stats-count__out" id="jsCountOut">0</li>
-        </ul>
-        <ul class="contents__stats-name">
-          <li class="stats-name__strike">Strike</li>
-          <li class="stats-name__ball">Ball</li>
-          <li class="stats-name__out">Out</li>
-        </ul>
-      </div>
+      <dl class="contents__stats">
+        <dt class="stats-name">Strike</dt>
+        <dd class="stats-count" id="jsCountStrike">0</dd>
+        <dt class="stats-name">Ball</dt>
+        <dd class="stats-count" id="jsCountBall">0</dd>
+        <dt class="stats-name">Out</dt>
+        <dd class="stats-count" id="jsCountOut">0</dd>
+      </dl>
     </div>
     <script src="baseball.js"></script>
   </body>
