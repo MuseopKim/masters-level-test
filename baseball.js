@@ -19,10 +19,23 @@ match.makeJudgement = function() {
   }
 };
 
+match.isOutOrHit = function() {
+  if (this.strike === 3) {
+    this.out++;
+    this.strike = 0;
+  }
+
+  if (this.ball === 4) {
+    this.hit++;
+    this.ball = 0;
+  }
+};
+
 function main() {
   for (let i = 0; i < 10; i++) {
     match.makeJudgement();
     console.log("strike : " + match.strike, "ball : " + match.ball);
+    match.isOutOrHit();
   }
 }
 
