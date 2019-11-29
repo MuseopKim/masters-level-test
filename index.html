@@ -7,6 +7,29 @@
     <title>2020 Masters League</title>
   </head>
   <body>
+    <div class="header">
+      <h1 class="header__title" id="jsMatchTitle">
+        2020 Masters League - Baseball Match
+      </h1>
+    </div>
+    <div class="contents">
+      <p class="contents__enter-batter" id="jsNewBatter">
+        첫 번째 타자가 타석에 입장 했습니다.
+      </p>
+      <p class="contents__judge">판정 입력</p>
+      <div class="contents__stats">
+        <ul class="contents__stats-count">
+          <li class="stats-count__strike" id="jsCountStrike">0</li>
+          <li class="stats-count__ball" id="jsCountBall">0</li>
+          <li class="stats-count__out" id="jsCountOut">0</li>
+        </ul>
+        <ul class="contents__stats-name">
+          <li class="stats-name__strike">Strike</li>
+          <li class="stats-name__ball">Ball</li>
+          <li class="stats-name__out">Out</li>
+        </ul>
+      </div>
+    </div>
     <script src="baseball.js"></script>
   </body>
 </html>
