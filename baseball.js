@@ -9,6 +9,7 @@ const match = {
   hit: 0
 };
 
+// 스트라이크, 볼, 아웃의 수를 실시간 점수판에 출력
 function printCount() {
   const strikeCount = document.querySelector("#jsCountStrike");
   strikeCount.innerHTML = match.strike;
@@ -20,12 +21,14 @@ function printCount() {
   outCount.innerHTML = match.out;
 }
 
+// 판정 결과를 화면에 출력
 function printJudgement(judgement) {
   const comment = document.querySelector("#jsComment");
 
   comment.innerHTML = judgement;
 }
 
+// 랜덤으로 스트라이크, 볼 중 하나의 판정을 결정
 match.makeJudgement = function() {
   let randomNumber = Math.floor(Math.random() * 100 + 1);
   let judgement = "";
@@ -41,6 +44,7 @@ match.makeJudgement = function() {
   }
 };
 
+// 안타, 아웃을 확인
 match.isOutOrHit = function() {
   let judgement = "";
 
@@ -59,6 +63,7 @@ match.isOutOrHit = function() {
   }
 };
 
+// 3 아웃 이후 게임이 끝나면 최종 결과를 출력
 function printFinalResult() {
   const comment = document.querySelector("#jsComment");
   const gameover = "Game Over";
@@ -74,6 +79,7 @@ function printFinalResult() {
   hitCount.innerHTML = match.hit;
 }
 
+// 버튼을 클릭 시 1회 실행
 function playGame(e) {
   match.makeJudgement();
   match.isOutOrHit();
@@ -85,9 +91,9 @@ function playGame(e) {
     e.target.style.display = "none";
     resetBtn.style.display = "inline-block";
   }
-  console.log("strike : " + match.strike, "ball : " + match.ball);
 }
 
+// 게임 실행시 모든 화면과 스코어를 초기화
 function initGame() {
   match.strike = 0;
   match.ball = 0;
@@ -98,6 +104,7 @@ function initGame() {
   comment.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
 }
 
+// 게임 종료 후 버튼을 클릭 시 모든 것을 처음 상태로 돌림
 function resetGame(e) {
   initGame();
 
