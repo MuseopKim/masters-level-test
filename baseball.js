@@ -10,10 +10,7 @@
 }
 */
 
-function Match(team1, team2) {
-  this.team1 = team1;
-  this.team2 = team2;
-}
+const match = {};
 
 function Team(name, fitcher) {
   this.name = name;
@@ -78,25 +75,100 @@ function setTeam2() {
   return team2;
 }
 
-function setMatch() {
+match.resetStats = function() {
+  console.log(this);
+  this.strike = 0;
+  this.ball = 0;
+  this.out = 0;
+  this.hit = 0;
+};
+
+match.setMatch = function(team1, team2) {
+  this.team1 = team1;
+  this.team2 = team2;
+  this.team1Score = 0;
+  this.team2Score = 0;
+  this.round = 1;
+  this.isSecondHalf = false;
+  this.currentNum = 0;
+  this.offendTeam = team1;
+};
+
+function saveData() {
   const team1 = setTeam1();
   console.log(team1);
 
   const team2 = setTeam2();
   console.log(team2);
 
-  const match = new Match(team1, team2);
+  match.setMatch(team1, team2);
+}
 
-  console.log(match);
+// 1. 팀 1이 공격을 한다.
+// 2. 안타나 아웃이 나면 다음 타자로 넘어간다.
+// 3. 9번까지 돌아간 뒤 1번으로 다시 돌아간다.
+// 4. 3 Out이면 1회 초가 끝나고 1회 말로 넘어간다.
+// 5. 1회 말로 넘어가면 팀 2가 공격을 한다.
 
-  return match;
+match.judgeStats = function(hitAvrg) {
+  const randomNum = Math.random();
+  console.log(randomNum);
+  let comment = "";
+
+  if (randomNum < 0.1) {
+    this.currentNum++;
+    this.out++;
+    comment = "아웃!";
+  } else if (randomNum < (1 - hitAvrg) / 2 - 0.05) {
+    this.strike++;
+  } else if (randomNum < ((1 - hitAvrg) / 2 - 0.05) * 2) {
+    this.ball++;
+  } else {
+    this.currentNum++;
+    this.hit++;
+    comment = "안타!";
+  }
+  console.log(comment);
+};
+
+match.isOutOrHit = function() {
+  let comment = "";
+  if (this.strike === 3) {
+    comment = "삼진 아웃!";
+    this.strike = 0;
+    this.out++;
+  } else {
+    comment = "스트라이크!";
+  }
+
+  if (this.ball === 4) {
+    comment = "안타!";
+    this.ball = 0;
+    this.hit++;
+  } else {
+    comment = "볼!";
+  }
+};
+
+function playRound() {
+  match.resetStats();
+  const currentTeam = match.offendTeam;
+  const currentNum = match.currentNum;
+  const currentPlayer = currentTeam.batterPlayers[currentNum];
+  const hitAverage = currentPlayer.average;
+
+  match.judgeStats(hitAverage);
+  match.isOutOrHit();
+
+  console.log(currentPlayer);
 }
 
 function main() {
   const saveBtn = document.querySelector("#jsTeamSave");
-  const match = saveBtn.addEventListener("click", setMatch);
+  saveBtn.addEventListener("click", saveData);
 
-  console.log(match);
+  const playBtn = document.querySelector("#jsPlayBtn");
+  playBtn.addEventListener("click", playRound);
 }
 
 main();
