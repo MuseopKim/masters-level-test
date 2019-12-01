@@ -1,15 +1,3 @@
-/*
- 팀 정보 입력을 받는다.
- players = [{
-     name: name1
-     average: average1
- }, 
- {name: name2
-  average: average2
- }, ...]
-}
-*/
-
 const match = {};
 
 function Team(name, fitcher) {
@@ -86,12 +74,18 @@ match.resetStats = function() {
 match.setMatch = function(team1, team2) {
   this.team1 = team1;
   this.team2 = team2;
-  this.team1Score = 0;
-  this.team2Score = 0;
   this.round = 1;
   this.isSecondHalf = false;
   this.currentNum = 0;
   this.offendTeam = team1;
+
+  this.strike = 0;
+  this.ball = 0;
+  this.out = 0;
+  this.hit = 0;
+
+  team1.score = 0;
+  team2.score = 0;
 };
 
 function saveData() {
@@ -110,57 +104,115 @@ function saveData() {
 // 4. 3 Out이면 1회 초가 끝나고 1회 말로 넘어간다.
 // 5. 1회 말로 넘어가면 팀 2가 공격을 한다.
 
-match.judgeStats = function(hitAvrg) {
+function decideJudgement(hitAvrg) {
   const randomNum = Math.random();
-  console.log(randomNum);
-  let comment = "";
+  let judgement = "";
 
   if (randomNum < 0.1) {
-    this.currentNum++;
-    this.out++;
-    comment = "아웃!";
+    judgement = "out";
   } else if (randomNum < (1 - hitAvrg) / 2 - 0.05) {
-    this.strike++;
+    judgement = "strike";
   } else if (randomNum < ((1 - hitAvrg) / 2 - 0.05) * 2) {
-    this.ball++;
+    judgement = "ball";
   } else {
-    this.currentNum++;
+    judgement = "hit";
+  }
+
+  return judgement;
+}
+
+match.changeOffend = function() {
+  if (this.isSecondHalf) {
+    this.round++;
+    this.offendTeam = this.team1;
+  } else {
+    this.offendTeam = this.team2;
+  }
+  this.isSecondHalf = !this.isSecondHalf;
+
+  this.currentNum = 0;
+  this.resetStats();
+};
+
+function isFinish() {
+  if (match.round === 5 && match.isSecondHalf) {
+    if (match.team1Score < match.team2Score) {
+      // 결과 출력
+      console.log("Game Over");
+    } else {
+      match.resetStats();
+      match.changeOffend();
+    }
+  } else if (match.round === 6 && match.isSecondHalf) {
+    console.log("Game Over");
+  } else {
+    match.resetStats();
+    match.changeOffend();
+  }
+}
+
+match.updateStats = function(judgement) {
+  const offendTeam = this.offendTeam;
+
+  let comment = "";
+
+  if (judgement === "strike") {
+    this.strike++;
+    comment = "스트라이크!";
+  } else if (judgement === "ball") {
+    this.ball++;
+    comment = "볼!";
+  } else if (judgement === "out") {
+    this.out++;
+    this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
+    comment = "아웃!";
+  } else if (judgement === "hit") {
     this.hit++;
+    this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "안타!";
+  }
+
+  if (this.strike === 3) {
+    this.strike = 0;
+    this.out++;
+    this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
+    comment = "삼진 아웃!";
+  } else if (this.ball === 4) {
+    this.ball = 0;
+    this.hit++;
+    this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
+    comment = "4볼 안타!";
+  } else if (this.out === 3) {
+    isFinish();
+  }
+  if (this.hit >= 4) {
+    offendTeam.score++;
   }
   console.log(comment);
 };
 
-match.isOutOrHit = function() {
-  let comment = "";
-  if (this.strike === 3) {
-    comment = "삼진 아웃!";
-    this.strike = 0;
-    this.out++;
-  } else {
-    comment = "스트라이크!";
-  }
-
-  if (this.ball === 4) {
-    comment = "안타!";
-    this.ball = 0;
-    this.hit++;
-  } else {
-    comment = "볼!";
-  }
-};
+function judgeStats(hitAvrg) {
+  const judgement = decideJudgement(hitAvrg);
+  match.updateStats(judgement);
+}
 
 function playRound() {
-  match.resetStats();
   const currentTeam = match.offendTeam;
   const currentNum = match.currentNum;
   const currentPlayer = currentTeam.batterPlayers[currentNum];
   const hitAverage = currentPlayer.average;
 
-  match.judgeStats(hitAverage);
-  match.isOutOrHit();
+  judgeStats(hitAverage);
 
   console.log(currentPlayer);
+  console.log(
+    `Strike: ${match.strike}`,
+    `Ball: ${match.ball}`,
+    `Hit: ${match.hit}`,
+    `Out: ${match.out}`
+  );
+  console.log(`Team1 : ${match.team1.score}`, `Team2 : ${match.team2.score}`);
+  console.log(match.round);
 }
 
 function main() {
