@@ -49,7 +49,12 @@
         <ul class="contents__input-team1">
           <li class="team1-name">
             <span class="input-label">팀 이름</span
-            ><input type="text" class="input-box team-name" id="jsTeam1Name" />
+            ><input
+              type="text"
+              class="input-box team-name"
+              id="jsTeam1Name"
+              value="코드 스쿼드"
+            />
           </li>
           <ul class="team1-batters">
             <li class="team1-batter">
@@ -323,7 +328,7 @@
         <h2 class="contents__info-title">팀 정보</h2>
         <div class="contents__info-team1">
           <h3 class="info__team1-name" id="jsInfoTeam1Name">팀1 이름</h3>
-          <table class="team1-table">
+          <table class="info__team1-table">
             <tr>
               <th class="info__table-item">번호</th>
               <th class="info__table-item">이름</th>
@@ -383,7 +388,7 @@
         </div>
         <div class="contents__info-team2">
           <h3 class="info__team2-name" id="jsInfoTeam2Name">팀2 이름</h3>
-          <table class="team2-table">
+          <table class="info__team2-table">
             <tr>
               <th class="info__table-item">번호</th>
               <th class="info__table-item">이름</th>
@@ -444,7 +449,95 @@
       </div>
       <div class="contents__play" id="jsPlayBox">
         <h2 class="contents__play-title">시합 시작</h2>
+        <table class="contents__play-score" border="1">
+          <tr>
+            <td></td>
+            <th class="score-list">1</th>
+            <th class="score-list">2</th>
+            <th class="score-list">3</th>
+            <th class="score-list">4</th>
+            <th class="score-list">5</th>
+            <th class="score-list">6</th>
+            <th class="score-list">점수</th>
+          </tr>
+          <tr>
+            <th class="team-name" id="jsScoreTeam1Name">팀1 이름</th>
+            <td class="round-score jsTeam1RoundScore">0</td>
+            <td class="round-score jsTeam1RoundScore">0</td>
+            <td class="round-score jsTeam1RoundScore">0</td>
+            <td class="round-score jsTeam1RoundScore">0</td>
+            <td class="round-score jsTeam1RoundScore">0</td>
+            <td class="round-score jsTeam1RoundScore">0</td>
+            <td class="round-score" id="jsTeam1TotalScore">0</td>
+          </tr>
+          <tr>
+            <th class="team-name" id="jsScoreTeam2Name">팀2 이름</th>
+            <td class="round-score jsTeam2RoundScore">0</td>
+            <td class="round-score jsTeam2RoundScore">0</td>
+            <td class="round-score jsTeam2RoundScore">0</td>
+            <td class="round-score jsTeam2RoundScore">0</td>
+            <td class="round-score jsTeam2RoundScore">0</td>
+            <td class="round-score jsTeam2RoundScore">0</td>
+            <td class="round-score" id="jsTeam2TotalScore">0</td>
+          </tr>
+        </table>
+
         <p class="contents__play-comment" id="jsComment"></p>
+        <table class="play__team1-table">
+          <tr>
+            <td class="play__player-number">1</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">2</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">3</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">4</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">5</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">6</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">7</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">8</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">9</td>
+            <td class="play__player-name jsPlayTeam1PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">투수</td>
+            <td class="play__player-name" id="jsPlayTeam1PitcherName"></td>
+          </tr>
+          <tr>
+            <td class="play__accumulated-stat">투구</td>
+            <td class="play__count-play" id="jsCountTeam1Play">0</td>
+          </tr>
+          <tr>
+            <td class="play__accumulated-stat">삼진</td>
+            <td class="play__three-strike" id="jsCountTeam1ThreeStrike">0</td>
+          </tr>
+          <tr>
+            <td class="play__accumulated-stat">안타</td>
+            <td class="play__count-hit" id="jsCountTeam1Hit">0</td>
+          </tr>
+        </table>
+
         <p class="contents__play-judgement" id="jsJudgement"></p>
         <span class="contents__play-player" id="jsPlayerInfo"></span>
         <dl class="contents__play-stat">
@@ -460,6 +553,65 @@
         <button type="button" class="contents__play-btn" id="jsPlayBtn">
           실행
         </button>
+        <table class="play__team2-table">
+          <tr>
+            <td class="play__player-number">1</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">2</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">3</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">4</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">5</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">6</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">7</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">8</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">9</td>
+            <td class="play__player-name jsPlayTeam2PlayerName"></td>
+          </tr>
+          <tr>
+            <td class="play__player-number">투수</td>
+            <td class="play__player-name" id="jsPlayTeam2PitcherName"></td>
+          </tr>
+          <tr>
+            <td class="play__accumulated-stat">투구</td>
+            <td class="play__count-play" id="jsCountTeam2Play">0</td>
+          </tr>
+          <tr>
+            <td class="play__accumulated-stat">삼진</td>
+            <td class="play__three-strike" id="jsCountTeam2ThreeStrike">0</td>
+          </tr>
+          <tr>
+            <td class="play__accumulated-stat">안타</td>
+            <td class="play__count-hit" id="jsCountTeam2Hit">0</td>
+          </tr>
+        </table>
+
+        <div class="contents__play-skip">
+          <input type="text" class="play-skip__input" id="jsSkipInput" />
+          <button class="play-skip__btn" id="jsSkipBtn">스킵</button>
+        </div>
       </div>
       <div class="contents__result" id="jsResultBox">
         <h2 class="contents__result-title">경기 종료</h2>
