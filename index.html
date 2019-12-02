@@ -6,10 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>2020 Masters League</title>
     <style>
-      .contents__menu-list {
-        display: none;
+      .contents__menu {
+        display: block;
+      }
+      .contents__input {
+        display: block;
+      }
+      .contents__menu .contents__menu-list .menu-btn {
+        display: block;
       }
       .contents__info {
+        display: none;
+      }
+      .contents__play {
+        display: none;
+      }
+      .contents__result {
         display: none;
       }
     </style>
@@ -17,16 +29,22 @@
   <body>
     <div class="header">
       <h2 class="header__main-title">2020 Masters League</h2>
+      <div class="header__menu" id="jsMenuBox">
+        <div class="header__menu-list">
+          <button type="button" class="menu-btn" id="jsShowInputBtn">
+            팀 정보 입력
+          </button>
+          <button type="button" class="menu-btn" id="jsShowInfoBtn">
+            팀 정보 출력
+          </button>
+          <button type="button" class="menu-btn" id="jsShowPlayBtn">
+            시합 시작
+          </button>
+        </div>
+      </div>
     </div>
     <div class="contents">
-      <div class="contents__menu">
-        <ul class="contents__menu-list">
-          <li class="contents__menu-item">팀 정보 입력</li>
-          <li class="contents__menu-item">팀 정보 출력</li>
-          <li class="contents__menu-item">시합 시작</li>
-        </ul>
-      </div>
-      <div class="contents__input">
+      <div class="contents__input" id="jsInputBox">
         <h2 class="contents__input-title">팀 정보 입력</h2>
         <ul class="contents__input-team1">
           <li class="team1-name">
@@ -171,7 +189,7 @@
             ><input
               type="text"
               class="input-box"
-              id="jsTeam1FitcherName"
+              id="jsTeam1PitcherName"
               value="김구정"
             />
           </li>
@@ -299,35 +317,171 @@
             ><input
               type="text"
               class="input-box"
-              id="jsTeam2FitcherName"
+              id="jsTeam2PitcherName"
               value="즐겁고양"
             />
           </li>
         </ul>
         <button type="button" id="jsTeamSave">팀 정보 저장</button>
       </div>
-      <div class="contents__info">
-        <h2 class="contents__info-title">팀 정보 출력</h2>
-        <ul class="info-team1">
-          <li class="info-team1-name">팀1 이름</li>
-        </ul>
-        <ul class="info-team2">
-          <li class="info-team2-name">팀2 이름</li>
-        </ul>
+      <div class="contents__info" id="jsInfoBox">
+        <h2 class="contents__info-title">팀 정보</h2>
+        <div class="contents__info-team1">
+          <h3 class="info__team1-name" id="jsInfoTeam1Name">팀1 이름</h3>
+          <table class="team1-table">
+            <tr>
+              <th class="info__table-item">번호</th>
+              <th class="info__table-item">이름</th>
+              <th class="info__table-item">타율</th>
+            </tr>
+            <tr>
+              <td class="info__player-number">1</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">2</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">3</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">4</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">5</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">6</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">7</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">8</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">9</td>
+              <td class="info__player-name jsInfoTeam1PlayerName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">투수</td>
+              <td class="info__player-name" id="jsInfoTeam1PitcherName"></td>
+              <td class="info__player-average jsInfoTeam1PlayerAvrg">""</td>
+            </tr>
+          </table>
+        </div>
+        <div class="contents__info-team2">
+          <h3 class="info__team2-name" id="jsInfoTeam2Name">팀2 이름</h3>
+          <table class="team2-table">
+            <tr>
+              <th class="info__table-item">번호</th>
+              <th class="info__table-item">이름</th>
+              <th class="info__table-item">타율</th>
+            </tr>
+            <tr>
+              <td class="info__player-number">1</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">2</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">3</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">4</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">5</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">6</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">7</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">8</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">9</td>
+              <td class="info__player-name jsInfoTeam2PlayerName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+            </tr>
+            <tr>
+              <td class="info__player-number">투수</td>
+              <td class="info__player-name" id="jsInfoTeam2PitcherName"></td>
+              <td class="info__player-average jsInfoTeam2PlayerAvrg">""</td>
+            </tr>
+          </table>
+        </div>
       </div>
-      <div class="contents__play">
+      <div class="contents__play" id="jsPlayBox">
         <h2 class="contents__play-title">시합 시작</h2>
-        <p class="contents__play-comment"></p>
-        <p class="contents__play-judgement"></p>
+        <p class="contents__play-comment" id="jsComment"></p>
+        <p class="contents__play-judgement" id="jsJudgement"></p>
+        <span class="contents__play-player" id="jsPlayerInfo"></span>
         <dl class="contents__play-stat">
           <dt class="stat-name">Strike</dt>
-          <dd class="count-strike">0</dd>
+          <dd class="count-strike" id="jsCountStrike">0</dd>
           <dt class="stat-name">Ball</dt>
-          <dd class="count-ball">0</dd>
+          <dd class="count-ball" id="jsCountBall">0</dd>
+          <dt class="stat-name">Hit</dt>
+          <dd class="count-ball" id="jsCountHit">0</dd>
           <dt class="stat-name">Out</dt>
-          <dd class="count-out">0</dd>
+          <dd class="count-out" id="jsCountOut">0</dd>
         </dl>
-        <button type="button" class="contents__play-btn" id="jsPlayBtn">실행</button>
+        <button type="button" class="contents__play-btn" id="jsPlayBtn">
+          실행
+        </button>
+      </div>
+      <div class="contents__result" id="jsResultBox">
+        <h2 class="contents__result-title">경기 종료</h2>
+        <table class="contents__score-table">
+          <tr>
+            <th class="score__team-name" id="jsTableTeam1Name">팀1 이름</th>
+            <th class="score__team-name" id="jsTableTeam2Name">팀2 이름</th>
+          </tr>
+          <tr>
+            <td class="score__team-score" id="jsTableTeam1Score">팀1 점수</td>
+            <td class="score__team-score" id="jsTableTeam2Score">팀2 점수</td>
+          </tr>
+        </table>
+
+        <button type="button" class="contents__result-reset" id="jsResetBtn">
+          처음으로 돌아가기
+        </button>
       </div>
     </div>
     <script src="baseball.js"></script>

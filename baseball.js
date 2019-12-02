@@ -1,9 +1,9 @@
 const match = {};
 
-function Team(name, fitcher) {
+function Team(name, pitcher) {
   this.name = name;
   this.batterPlayers = [];
-  this.fitcher = fitcher;
+  this.pitcher = pitcher;
 }
 
 Team.prototype.addPlayer = function(name, avrg) {
@@ -44,9 +44,9 @@ Team.prototype.setBatter = function(num) {
 
 function setTeam1() {
   const teamName = document.querySelector("#jsTeam1Name").value;
-  const teamFitcher = document.querySelector("#jsTeam1FitcherName").value;
+  const teamPitcher = document.querySelector("#jsTeam1PitcherName").value;
 
-  const team1 = new Team(teamName, teamFitcher);
+  const team1 = new Team(teamName, teamPitcher);
 
   team1.setBatter(1);
 
@@ -55,9 +55,9 @@ function setTeam1() {
 
 function setTeam2() {
   const teamName = document.querySelector("#jsTeam2Name").value;
-  const teamFitcher = document.querySelector("#jsTeam2FitcherName").value;
+  const teamPitcher = document.querySelector("#jsTeam2PitcherName").value;
 
-  const team2 = new Team(teamName, teamFitcher);
+  const team2 = new Team(teamName, teamPitcher);
   team2.setBatter(2);
 
   return team2;
@@ -86,6 +86,11 @@ match.setMatch = function(team1, team2) {
 
   team1.score = 0;
   team2.score = 0;
+
+  // 경기 코멘트 초기화
+  const comment = document.querySelector("#jsComment");
+  comment.innerHTML =
+    team1.name + " VS " + team2.name + "의 시합을 시작합니다.";
 };
 
 function saveData() {
@@ -96,13 +101,15 @@ function saveData() {
   console.log(team2);
 
   match.setMatch(team1, team2);
-}
 
-// 1. 팀 1이 공격을 한다.
-// 2. 안타나 아웃이 나면 다음 타자로 넘어간다.
-// 3. 9번까지 돌아간 뒤 1번으로 다시 돌아간다.
-// 4. 3 Out이면 1회 초가 끝나고 1회 말로 넘어간다.
-// 5. 1회 말로 넘어가면 팀 2가 공격을 한다.
+  const inputBox = document.querySelector("#jsInputBox");
+  const infoBox = document.querySelector("#jsInfoBox");
+
+  showInfo();
+
+  inputBox.style.display = "none";
+  infoBox.style.display = "block";
+}
 
 function decideJudgement(hitAvrg) {
   const randomNum = Math.random();
@@ -134,17 +141,25 @@ match.changeOffend = function() {
   this.resetStats();
 };
 
+function setFinish() {
+  const playBox = document.querySelector("#jsPlayBox");
+  playBox.style.display = "none";
+
+  const resultBox = document.querySelector("#jsResultBox");
+  resultBox.style.display = "block";
+}
+
 function isFinish() {
   if (match.round === 5 && match.isSecondHalf) {
     if (match.team1Score < match.team2Score) {
-      // 결과 출력
+      setFinish();
       console.log("Game Over");
     } else {
       match.resetStats();
       match.changeOffend();
     }
   } else if (match.round === 6 && match.isSecondHalf) {
-    console.log("Game Over");
+    setFinish();
   } else {
     match.resetStats();
     match.changeOffend();
@@ -152,6 +167,7 @@ function isFinish() {
 }
 
 match.updateStats = function(judgement) {
+  const commentBox = document.querySelector("#jsJudgement");
   const offendTeam = this.offendTeam;
 
   let comment = "";
@@ -171,29 +187,68 @@ match.updateStats = function(judgement) {
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "안타!";
   }
-
-  if (this.strike === 3) {
+  if (this.out === 3) {
+    isFinish();
+  } else if (this.strike === 3) {
     this.strike = 0;
     this.out++;
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "삼진 아웃!";
+    if (this.out === 3) {
+      isFinish();
+    }
   } else if (this.ball === 4) {
     this.ball = 0;
     this.hit++;
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "4볼 안타!";
-  } else if (this.out === 3) {
-    isFinish();
   }
   if (this.hit >= 4) {
     offendTeam.score++;
   }
-  console.log(comment);
+  commentBox.innerHTML = comment;
 };
 
 function judgeStats(hitAvrg) {
   const judgement = decideJudgement(hitAvrg);
   match.updateStats(judgement);
+}
+
+// 1. 코멘트
+// 2. 현재 선수
+// 3. 판정
+
+function printStats(num, player) {
+  const comment = document.querySelector("#jsComment");
+  const playerInfo = document.querySelector("#jsPlayerInfo");
+  const countStrike = document.querySelector("#jsCountStrike");
+  const countBall = document.querySelector("#jsCountBall");
+  const countHit = document.querySelector("#jsCountHit");
+  const countOut = document.querySelector("#jsCountOut");
+  let firstOrSecondHalf = match.isSecondHalf ? "회말" : "회초";
+
+  comment.innerHTML =
+    match.round + firstOrSecondHalf + " " + match.offendTeam.name + " 공격";
+
+  playerInfo.innerHTML = num + 1 + "번 " + player.name;
+
+  countStrike.innerHTML = match.strike;
+  countBall.innerHTML = match.ball;
+  countHit.innerHTML = match.hit;
+  countOut.innerHTML = match.out;
+}
+
+function showResult() {
+  const team1Name = document.querySelector("#jsTableTeam1Name");
+  const team2Name = document.querySelector("#jsTableTeam2Name");
+  const team1Score = document.querySelector("#jsTableTeam1Score");
+  const team2Score = document.querySelector("#jsTableTeam2Score");
+
+  team1Name.innerHTML = match.team1.name;
+  team2Name.innerHTML = match.team2.name;
+
+  team1Score.innerHTML = match.team1.score;
+  team2Score.innerHTML = match.team2.score;
 }
 
 function playRound() {
@@ -203,6 +258,8 @@ function playRound() {
   const hitAverage = currentPlayer.average;
 
   judgeStats(hitAverage);
+  printStats(currentNum, currentPlayer);
+  showResult();
 
   console.log(currentPlayer);
   console.log(
@@ -215,12 +272,87 @@ function playRound() {
   console.log(match.round);
 }
 
+function showInfo() {
+  // 팀 1 정보 입력
+  const team1 = match.team1;
+  const team1Name = document.querySelector("#jsInfoTeam1Name");
+  const team1PlayerName = document.querySelectorAll(".jsInfoTeam1PlayerName");
+  const team1PlayerAvrg = document.querySelectorAll(".jsInfoTeam1PlayerAvrg");
+  const team1PitcherName = document.querySelector("#jsInfoTeam1PitcherName");
+
+  team1Name.innerHTML = team1.name;
+
+  for (let i = 0; i < team1PlayerName.length; i++) {
+    const player = team1.batterPlayers[i];
+    team1PlayerName[i].innerHTML = player.name;
+    team1PlayerAvrg[i].innerHTML = player.average;
+  }
+
+  team1PitcherName.innerHTML = team1.pitcher;
+
+  // 팀 2 정보 입력
+  const team2 = match.team2;
+  const team2Name = document.querySelector("#jsInfoTeam2Name");
+  const team2PlayerName = document.querySelectorAll(".jsInfoTeam2PlayerName");
+  const team2PlayerAvrg = document.querySelectorAll(".jsInfoTeam2PlayerAvrg");
+  const team2PitcherName = document.querySelector("#jsInfoTeam2PitcherName");
+
+  team2Name.innerHTML = team2.name;
+
+  for (let i = 0; i < team2PlayerName.length; i++) {
+    const player = team2.batterPlayers[i];
+    team2PlayerName[i].innerHTML = player.name;
+    team2PlayerAvrg[i].innerHTML = player.average;
+  }
+
+  team2PitcherName.innerHTML = team2.pitcher;
+}
+
+function showAndHideBox(e) {
+  const infoBox = document.querySelector("#jsInfoBox");
+  const playBox = document.querySelector("#jsPlayBox");
+  const inputBox = document.querySelector("#jsInputBox");
+
+  if (e.target.id === "jsShowInputBtn") {
+    infoBox.style.display = "none";
+    playBox.style.display = "none";
+    inputBox.style.display = "block";
+  } else if (e.target.id === "jsShowInfoBtn") {
+    if (match.team1) {
+      playBox.style.display = "none";
+      inputBox.style.display = "none";
+      infoBox.style.display = "block";
+      showInfo();
+    } else {
+      alert("팀 정보를 먼저 입력 해주세요.");
+    }
+  } else if (e.target.id === "jsShowPlayBtn") {
+    inputBox.style.display = "none";
+    infoBox.style.display = "none";
+    playBox.style.display = "block";
+  }
+}
+
 function main() {
+  const showInputBtn = document.querySelector("#jsShowInputBtn");
+  showInputBtn.addEventListener("click", showAndHideBox);
+
+  const showInfoBtn = document.querySelector("#jsShowInfoBtn");
+  showInfoBtn.addEventListener("click", showAndHideBox);
+
+  const showPlayBtn = document.querySelector("#jsShowPlayBtn");
+  showPlayBtn.addEventListener("click", showAndHideBox);
+
   const saveBtn = document.querySelector("#jsTeamSave");
   saveBtn.addEventListener("click", saveData);
 
   const playBtn = document.querySelector("#jsPlayBtn");
   playBtn.addEventListener("click", playRound);
+
+  const resetBtn = document.querySelector("#jsResetBtn");
+  resetBtn.addEventListener("click", function() {
+    location.reload();
+  });
 }
 
 main();
