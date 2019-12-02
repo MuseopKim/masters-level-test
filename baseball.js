@@ -262,7 +262,7 @@ function setFinish() {
 
 // 3 아웃시 경기를 종료 시킬지 여부를 결정
 function isFinish() {
-  if (match.round === 5 && match.isSecondHalf) {
+  if (match.round === 6 && !match.isSecondHalf) {
     if (match.team1Score < match.team2Score) {
       setFinish();
     } else {
