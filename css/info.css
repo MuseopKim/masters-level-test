@@ -1,0 +1,36 @@
+.contents__info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contents__info-title {
+  display: none;
+}
+
+.contents__info-team .info__team-name {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.contents__info-team .info__team-table {
+  width: 300px;
+  border: 1px solid black;
+  box-shadow: 1px 2px 5px 0px rgba(89, 79, 79, 1);
+}
+
+.contents__info-team .info__team-table th {
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid black;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.contents__info-team .info__team-table td {
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid black;
+  font-size: 12px;
+}

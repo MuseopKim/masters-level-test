@@ -1,0 +1,144 @@
+.contents__play-container {
+  display: flex;
+  justify-content: center;
+}
+
+.contents__play-title {
+  display: none;
+}
+
+.contents__play-score {
+  margin: 0 auto 30px auto;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.contents__play-score th {
+  border: 1px solid black;
+  padding: 5px 30px;
+}
+
+.contents__play-score td {
+  border: 1px solid black;
+  padding: 5px 30px;
+}
+
+.contents__play-score .score-list {
+  border: 1px solid black;
+}
+
+.contents__play-score .team-name {
+  padding: 5px 17px;
+}
+
+.contents__play-comment {
+  width: 500px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+  background: blue;
+}
+
+.contents__play-lineup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.play__team-table {
+  border: 1px solid black;
+  text-align: center;
+  font-size: 14px;
+}
+
+.play__team-table td {
+  border: 1px solid black;
+  padding: 5px 7px;
+}
+
+.play__team-table .play__player-name {
+  padding: 5px 15px;
+}
+
+.contents__play-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contents__play-judgement {
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+  background: gray;
+}
+
+.contents__play-player {
+  display: block;
+  width: 150px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 15px;
+  text-align: center;
+  background: orange;
+}
+
+.contents__play-stat {
+  border: 1px solid black;
+  text-align: center;
+  font-size: 14px;
+}
+
+.contents__play-stat th {
+  border: 1px solid black;
+  padding: 5px 7px;
+}
+
+.contents__play-stat td {
+  border: 1px solid black;
+  padding: 5px 7px;
+}
+
+.contents__play-btn {
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  background: #273c75;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.contents__play-skip {
+  width: 250px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contents__play-skip .play-skip__input {
+  margin-bottom: 10px;
+  width: 100px;
+  height: 17px;
+  text-align: center;
+  border: 1px solid gray;
+  opacity: 0.7;
+}
+
+.contents__play-skip .play-skip__btn {
+  border: none;
+  width: 70px;
+  height: 30px;
+  font-size: 12px;
+  background: #fbc531;
+  color: #f5f6fa;
+}

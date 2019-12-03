@@ -41,10 +41,10 @@ Team.prototype.setBatter = function(num) {
       break;
     }
 
-    if (average > 0.1 && average < 0.5) {
+    if (batterAvrg.length === 5 && average > 0.1 && average < 0.5) {
       this.addPlayer(batterName, average);
     } else {
-      alert("0.1에서 0.5 사이의 값을 입력 해주세요.");
+      alert("0.1에서 0.5 사이의 수를 소숫점 이하 세자리까지 입력 하세요.");
       batterAvrgs[i].focus();
       break;
     }
@@ -212,6 +212,7 @@ function saveData() {
   });
   inputBox.style.display = "none";
   infoBox.style.display = "block";
+  infoBox.style.width = "800px";
 
   scoreTeam1Name.innerHTML = team1.name;
   scoreTeam2Name.innerHTML = team2.name;
@@ -222,32 +223,40 @@ function showAndHideBox(e) {
   const infoBox = document.querySelector("#jsInfoBox");
   const playBox = document.querySelector("#jsPlayBox");
   const inputBox = document.querySelector("#jsInputBox");
-
-  if (e.target.id === "jsShowInputBtn") {
-    infoBox.style.display = "none";
-    playBox.style.display = "none";
-    inputBox.style.display = "block";
-  } else if (e.target.id === "jsShowInfoBtn") {
-    let isFilled = true;
+  let isFilled;
+  if (!match.team1) {
+    isFilled = false;
+  } else {
     for (let i = 0; i < 9; i++) {
       if (!match.team1.batterPlayers[i] || !match.team2.batterPlayers[i]) {
         isFilled = false;
+      } else {
+        isFilled = true;
       }
     }
-
+  }
+  if (e.target.id === "jsShowInputBtn") {
+    infoBox.style.display = "block";
+    infoBox.style.width = "800px";
+    playBox.style.display = "none";
+    inputBox.style.display = "block";
+    inputBox.style.width = "800px";
+  } else if (e.target.id === "jsShowInfoBtn") {
     if (isFilled) {
       playBox.style.display = "none";
       inputBox.style.display = "none";
       infoBox.style.display = "block";
+      infoBox.style.width = "800px";
       showInfo();
     } else {
       alert("팀 정보를 먼저 입력 해주세요.");
     }
   } else if (e.target.id === "jsShowPlayBtn") {
-    if (match.team1 && match.team2) {
+    if (isFilled) {
       inputBox.style.display = "none";
       infoBox.style.display = "none";
       playBox.style.display = "block";
+      playBox.style.width = "800px";
     } else {
       alert("팀 정보를 먼저 입력 해주세요.");
     }

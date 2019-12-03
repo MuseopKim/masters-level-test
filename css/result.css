@@ -1,0 +1,41 @@
+.contents__result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contents__result-title {
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.contents__score-table {
+  margin-bottom: 21px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 12px;
+}
+
+.contents__score-table .score__team-name {
+  padding: 10px 15px;
+  border: 1px solid black;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.contents__score-table .score__team-score {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.contents__result-reset {
+  width: 140px;
+  height: 30px;
+  text-align: center;
+  border: none;
+  background: #e84118;
+  color: #fff;
+  border-radius: 5px;
+}

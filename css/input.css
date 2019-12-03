@@ -1,0 +1,48 @@
+.contents__input {
+  width: 800px;
+}
+
+.contents__input-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 21px;
+  display: none;
+}
+
+.contents__input .input-label {
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+  margin: 0 5px 0 3px;
+}
+
+.contents__input .input-label2 {
+  display: inline-block;
+  width: 35px;
+  text-align: center;
+  margin: 0 5px 0 21px;
+}
+
+.contents__input .team-batter {
+  margin: 6px 0;
+}
+
+.contents__input .input-box {
+  width: 80px;
+  height: 21px;
+  text-align: center;
+}
+
+.contents__input .contents__input-save {
+  display: block;
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  margin: 30px auto;
+  border: none;
+  border-radius: 5px;
+  background: #273c75;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
