@@ -5,48 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>2020 Masters League</title>
-    <style>
-      .contents__stats {
-        display: block;
-      }
-      .contents__final-result {
-        display: none;
-      }
-      .contents__button-play {
-        display: inline-block;
-      }
-      .contents__button-reset {
-        display: none;
-      }
-    </style>
+    <link href="styles.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="header">
-      <h1 class="header__title" id="jsMatchTitle">
-        2020 Masters League - Baseball Match
-      </h1>
-    </div>
-    <div class="contents">
-      <p class="contents__comment" id="jsComment">
-        첫 번째 타자가 타석에 입장했습니다.
-      </p>
-      <dl class="contents__stats" id="jsStatsList">
-        <dt class="stats-name">Strike</dt>
-        <dd class="stats-count" id="jsCountStrike">0</dd>
-        <dt class="stats-name">Ball</dt>
-        <dd class="stats-count" id="jsCountBall">0</dd>
-        <dt class="stats-name">Out</dt>
-        <dd class="stats-count" id="jsCountOut">0</dd>
-      </dl>
-      <dl class="contents__final-result" id="jsFinalResult">
-        <dt class="stats-name final-result">최종 안타 수</dt>
-        <dd class="stats-count final-result" id="jsCountHit">0</dd>
-      </dl>
-      <div class="contents__buttons">
-        <button class="contents__button-play" id="jsPlayBtn">실행</button>
-        <button class="contents__button-reset" id="jsResetBtn">
-          다시 하기
-        </button>
+    <div class="wrap">
+      <div class="header">
+        <h1 class="header__title" id="jsMatchTitle">
+          2020 Masters League
+        </h1>
+      </div>
+      <div class="contents">
+        <p class="contents__comment" id="jsComment">
+          첫 번째 타자가 타석에 입장했습니다.
+        </p>
+        <table class="contents__stats" id="jsStatsList">
+          <tr>
+            <th class="stats-name">Strike</th>
+            <th class="stats-name">Ball</th>
+            <th class="stats-name">Out</th>
+          </tr>
+          <tr>
+            <td class="stats-count" id="jsCountStrike">0</td>
+            <td class="stats-count" id="jsCountBall">0</td>
+            <td class="stats-count" id="jsCountOut">0</td>
+          </tr>
+        </table>
+
+        <div class="result-wrap" id="jsFinalResult">
+          <table class="contents__final-result">
+            <tr>
+              <th class="stats-name final-result">최종 안타 수</th>
+            </tr>
+            <tr>
+              <td class="stats-count final-result" id="jsCountHit">0</td>
+            </tr>
+          </table>
+        </div>
+        <div class="contents__buttons">
+          <button class="contents__button-play" id="jsPlayBtn">실행</button>
+          <button class="contents__button-reset" id="jsResetBtn">
+            다시 하기
+          </button>
+        </div>
       </div>
     </div>
     <script src="baseball.js"></script>

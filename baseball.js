@@ -89,7 +89,9 @@ function playGame(e) {
 
     printFinalResult();
     e.target.style.display = "none";
-    resetBtn.style.display = "inline-block";
+    resetBtn.style.display = "block";
+    resetBtn.style.width = "100px";
+    resetBtn.style.height = "30px";
   }
 }
 
@@ -104,30 +106,14 @@ function initGame() {
   comment.innerHTML = "첫 번째 타자가 타석에 입장했습니다.";
 }
 
-// 게임 종료 후 버튼을 클릭 시 모든 것을 처음 상태로 돌림
-function resetGame(e) {
-  initGame();
-
-  const playBtn = document.querySelector("#jsPlayBtn");
-  e.target.style.display = "none";
-  playBtn.style.display = "inline-block";
-  playBtn.addEventListener("click", playGame);
-
-  const statsList = document.querySelector("#jsStatsList");
-  statsList.style.display = "block";
-
-  const finalResult = document.querySelector("#jsFinalResult");
-  finalResult.style.display = "none";
-
-  printCount();
-}
-
 function main() {
   const playBtn = document.querySelector("#jsPlayBtn");
   const resetBtn = document.querySelector("#jsResetBtn");
 
   playBtn.addEventListener("click", playGame);
-  resetBtn.addEventListener("click", resetGame);
+  resetBtn.addEventListener("click", function() {
+    location.reload();
+  });
 }
 
 main();
