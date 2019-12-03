@@ -5,32 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>2020 Masters League</title>
-    <style>
-      .contents__menu {
-        display: block;
-      }
-      .contents__input {
-        display: block;
-      }
-      .contents__menu .contents__menu-list .menu-btn {
-        display: block;
-      }
-      .contents__info {
-        display: none;
-      }
-      .contents__play {
-        display: none;
-      }
-      .contents__result {
-        display: none;
-      }
-    </style>
+    <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="header">
-      <h2 class="header__main-title">2020 Masters League</h2>
-      <div class="header__menu" id="jsMenuBox">
-        <div class="header__menu-list">
+    <div class="wrap">
+      <div class="header">
+        <h2 class="header__main-title">2020 Masters League</h2>
+        <div class="header__menu" id="jsMenuBox">
           <button type="button" class="menu-btn" id="jsShowInputBtn">
             팀 정보 입력
           </button>
@@ -42,441 +23,488 @@
           </button>
         </div>
       </div>
-    </div>
-    <div class="contents">
-      <div class="contents__input" id="jsInputBox">
-        <h2 class="contents__input-title">팀 정보 입력</h2>
-        <ul class="contents__input-team1">
-          <li class="team1-name">
-            <span class="input-label">팀 이름</span
-            ><input type="text" class="input-box team-name" id="jsTeam1Name" />
-          </li>
-          <ul class="team1-batters">
-            <li class="team1-batter">
-              <span class="input-label">1번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="김정정"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg1"
-                value="0.350"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">2번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="정호영"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg2"
-                value="0.351"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">3번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="나두성"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg3"
-                value="0.352"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">4번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="김두성"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg4"
-                value="0.353"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">5번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="김세정"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg5"
-                value="0.354"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">6번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="김네정"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg6"
-                value="0.355"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">7번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="김오정"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg7"
-                value="0.356"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">8번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="김육정"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg8"
-                value="0.357"
-              />
-            </li>
-            <li class="team1-batter">
-              <span class="input-label">9번 타자 이름</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterName"
-                value="김칠정"
-              /><span class="input-label">타율</span
-              ><input
-                type="text"
-                class="input-box jsTeam1BatterAvrg"
-                id="jsTeam1BatterAvrg9"
-                value="0.358"
-              />
-            </li>
-          </ul>
-          <li class="team1-pitcher">
-            <span class="input-label">투수 이름</span
-            ><input
-              type="text"
-              class="input-box"
-              id="jsTeam1PitcherName"
-              value="김구정"
-            />
-          </li>
-        </ul>
-        <ul class="contents__input-team2">
-          <li class="team2-name">
-            <span class="input-label">팀 이름</span
-            ><input
-              type="text"
-              class="input-box team-name"
-              id="jsTeam2Name"
-              value="Cats"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">1번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="김고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.330"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">2번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="이고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.331"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">3번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="윤고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.332"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">4번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="박고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.333"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">5번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="진고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.334"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">6번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="이긴고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.335"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">7번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="할고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.336"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">8번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="갈고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.337"
-            />
-          </li>
-          <li class="team2-batter">
-            <span class="input-label">9번 타자 이름</span
-            ><input
-              type="text"
-              class="input-box jsTeam2BatterName"
-              value="임고양"
-            />타율<input
-              type="text"
-              class="input-box jsTeam2BatterAvrg"
-              value="0.338"
-            />
-          </li>
-          <li class="team2-pitcher">
-            <span class="input-label">투수 이름</span
-            ><input
-              type="text"
-              class="input-box"
-              id="jsTeam2PitcherName"
-              value="즐겁고양"
-            />
-          </li>
-        </ul>
-        <button type="button" id="jsTeamSave">팀 정보 저장</button>
-      </div>
-      <div class="contents__info" id="jsInfoBox">
-        <h2 class="contents__info-title">팀 정보</h2>
-        <div class="contents__info-team1">
-          <h3 class="info__team1-name" id="jsInfoTeam1Name">팀1 이름</h3>
-          <table class="team1-table">
-            <tr>
-              <th class="info__table-item">번호</th>
-              <th class="info__table-item">이름</th>
-              <th class="info__table-item">타율</th>
-            </tr>
-            <tr>
-              <td class="info__player-number">1</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">2</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">3</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">4</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">5</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">6</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">7</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">8</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">9</td>
-              <td class="info__player-name jsInfoTeam1PlayerName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">투수</td>
-              <td class="info__player-name" id="jsInfoTeam1PitcherName"></td>
-              <td class="info__player-average jsInfoTeam1PlayerAvrg">""</td>
-            </tr>
-          </table>
+      <div class="contents">
+        <div class="input-wrap" id="jsInputBox">
+          <div class="contents__input">
+            <h2 class="contents__input-title">팀 정보 입력</h2>
+            <div class="contents__container">
+              <ul class="contents__input-team">
+                <li class="team-name">
+                  <span class="input-label">팀 이름</span
+                  ><input
+                    type="text"
+                    class="input-box team-name"
+                    id="jsTeam1Name"
+                    value="코드 스쿼드"
+                  />
+                </li>
+                <ul class="team-batters">
+                  <li class="team-batter">
+                    <span class="input-label">1번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="김정정"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg1"
+                      value="0.350"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">2번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="정호영"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg2"
+                      value="0.351"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">3번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="나두성"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg3"
+                      value="0.352"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">4번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="김두성"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg4"
+                      value="0.353"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">5번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="김세정"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg5"
+                      value="0.354"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">6번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="김네정"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg6"
+                      value="0.355"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">7번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="김오정"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg7"
+                      value="0.356"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">8번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="김육정"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg8"
+                      value="0.357"
+                    />
+                  </li>
+                  <li class="team-batter">
+                    <span class="input-label">9번 타자</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterName"
+                      value="김칠정"
+                    /><span class="input-label2">타율</span
+                    ><input
+                      type="text"
+                      class="input-box jsTeam1BatterAvrg"
+                      id="jsTeam1BatterAvrg9"
+                      value="0.358"
+                    />
+                  </li>
+                </ul>
+                <li class="team-pitcher">
+                  <span class="input-label">투수</span
+                  ><input
+                    type="text"
+                    class="input-box"
+                    id="jsTeam1PitcherName"
+                    value="김구정"
+                  />
+                </li>
+              </ul>
+              <ul class="contents__input-team">
+                <li class="team-name">
+                  <span class="input-label">팀 이름</span
+                  ><input
+                    type="text"
+                    class="input-box team-name"
+                    id="jsTeam2Name"
+                    value="Cats"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">1번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="김고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.330"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">2번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="이고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.331"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">3번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="윤고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.332"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">4번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="박고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.333"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">5번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="진고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.334"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">6번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="이긴고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.335"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">7번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="할고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.336"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">8번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="갈고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.337"
+                  />
+                </li>
+                <li class="team-batter">
+                  <span class="input-label">9번 타자</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterName"
+                    value="임고양"
+                  /><span class="input-label2">타율</span
+                  ><input
+                    type="text"
+                    class="input-box jsTeam2BatterAvrg"
+                    value="0.338"
+                  />
+                </li>
+                <li class="team-pitcher">
+                  <span class="input-label">투수</span
+                  ><input
+                    type="text"
+                    class="input-box"
+                    id="jsTeam2PitcherName"
+                    value="즐겁고양"
+                  />
+                </li>
+              </ul>
+            </div>
+            <button type="button" class="contents__input-save" id="jsTeamSave">
+              팀 정보 저장
+            </button>
+          </div>
         </div>
-        <div class="contents__info-team2">
-          <h3 class="info__team2-name" id="jsInfoTeam2Name">팀2 이름</h3>
-          <table class="team2-table">
-            <tr>
-              <th class="info__table-item">번호</th>
-              <th class="info__table-item">이름</th>
-              <th class="info__table-item">타율</th>
-            </tr>
-            <tr>
-              <td class="info__player-number">1</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">2</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">3</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">4</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">5</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">6</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">7</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">8</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">9</td>
-              <td class="info__player-name jsInfoTeam2PlayerName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
-            </tr>
-            <tr>
-              <td class="info__player-number">투수</td>
-              <td class="info__player-name" id="jsInfoTeam2PitcherName"></td>
-              <td class="info__player-average jsInfoTeam2PlayerAvrg">""</td>
-            </tr>
-          </table>
+        <div class="info-wrap" id="jsInfoBox">
+          <div class="contents__info">
+            <h2 class="contents__info-title">팀 정보</h2>
+            <div class="contents__info-team">
+              <h3 class="info__team-name" id="jsInfoTeam1Name">팀1 이름</h3>
+              <table class="info__team-table">
+                <tr>
+                  <th class="info__table-item">번호</th>
+                  <th class="info__table-item">이름</th>
+                  <th class="info__table-item">타율</th>
+                </tr>
+                <tr>
+                  <td class="info__player-number">1</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">2</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">3</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">4</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">5</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">6</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">7</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">8</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">9</td>
+                  <td class="info__player-name jsInfoTeam1PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">투수</td>
+                  <td
+                    class="info__player-name"
+                    id="jsInfoTeam1PitcherName"
+                  ></td>
+                  <td class="info__player-average jsInfoTeam1PlayerAvrg">""</td>
+                </tr>
+              </table>
+            </div>
+            <div class="contents__info-team">
+              <h3 class="info__team-name" id="jsInfoTeam2Name">팀2 이름</h3>
+              <table class="info__team-table">
+                <tr>
+                  <th class="info__table-item">번호</th>
+                  <th class="info__table-item">이름</th>
+                  <th class="info__table-item">타율</th>
+                </tr>
+                <tr>
+                  <td class="info__player-number">1</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">2</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">3</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">4</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">5</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">6</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">7</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">8</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">9</td>
+                  <td class="info__player-name jsInfoTeam2PlayerName"></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg"></td>
+                </tr>
+                <tr>
+                  <td class="info__player-number">투수</td>
+                  <td
+                    class="info__player-name"
+                    id="jsInfoTeam2PitcherName"
+                  ></td>
+                  <td class="info__player-average jsInfoTeam2PlayerAvrg">""</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="contents__play" id="jsPlayBox">
-        <h2 class="contents__play-title">시합 시작</h2>
-        <p class="contents__play-comment" id="jsComment"></p>
-        <p class="contents__play-judgement" id="jsJudgement"></p>
-        <span class="contents__play-player" id="jsPlayerInfo"></span>
-        <dl class="contents__play-stat">
-          <dt class="stat-name">Strike</dt>
-          <dd class="count-strike" id="jsCountStrike">0</dd>
-          <dt class="stat-name">Ball</dt>
-          <dd class="count-ball" id="jsCountBall">0</dd>
-          <dt class="stat-name">Hit</dt>
-          <dd class="count-ball" id="jsCountHit">0</dd>
-          <dt class="stat-name">Out</dt>
-          <dd class="count-out" id="jsCountOut">0</dd>
-        </dl>
-        <button type="button" class="contents__play-btn" id="jsPlayBtn">
-          실행
-        </button>
-      </div>
-      <div class="contents__result" id="jsResultBox">
-        <h2 class="contents__result-title">경기 종료</h2>
-        <table class="contents__score-table">
-          <tr>
-            <th class="score__team-name" id="jsTableTeam1Name">팀1 이름</th>
-            <th class="score__team-name" id="jsTableTeam2Name">팀2 이름</th>
-          </tr>
-          <tr>
-            <td class="score__team-score" id="jsTableTeam1Score">팀1 점수</td>
-            <td class="score__team-score" id="jsTableTeam2Score">팀2 점수</td>
-          </tr>
-        </table>
+        <div class="play-wrap" id="jsPlayBox">
+          <div class="contents__play-container">
+            <div class="contents__play">
+              <h2 class="contents__play-title">시합 시작</h2>
+              <p class="contents__play-comment" id="jsComment"></p>
+              <p class="contents__play-judgement" id="jsJudgement"></p>
+              <p class="contents__play-player" id="jsPlayerInfo"></p>
+              <table class="contents__play-stat">
+                <tr>
+                  <th class="stat-name">Strike</th>
+                  <th class="stat-name">Ball</th>
+                  <th class="stat-name">Hit</th>
+                  <th class="stat-name">Out</th>
+                </tr>
+                <tr>
+                  <td class="count-strike" id="jsCountStrike">0</td>
+                  <td class="count-ball" id="jsCountBall">0</td>
+                  <td class="count-hit" id="jsCountHit">0</td>
+                  <td class="count-out" id="jsCountOut">0</td>
+                </tr>
+              </table>
 
-        <button type="button" class="contents__result-reset" id="jsResetBtn">
-          처음으로 돌아가기
-        </button>
+              <button type="button" class="contents__play-btn" id="jsPlayBtn">
+                실행
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="result-wrap" id="jsResultBox">
+          <div class="contents__result">
+            <h2 class="contents__result-title">경기 종료</h2>
+            <table class="contents__score-table">
+              <tr>
+                <th class="score__team-name" id="jsTableTeam1Name">팀1 이름</th>
+                <th class="score__team-name" id="jsTableTeam2Name">팀2 이름</th>
+              </tr>
+              <tr>
+                <td class="score__team-score" id="jsTableTeam1Score">
+                  팀1 점수
+                </td>
+                <td class="score__team-score" id="jsTableTeam2Score">
+                  팀2 점수
+                </td>
+              </tr>
+            </table>
+
+            <button
+              type="button"
+              class="contents__result-reset"
+              id="jsResetBtn"
+            >
+              처음으로 돌아가기
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="baseball.js"></script>

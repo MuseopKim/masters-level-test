@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500&display=swap&subset=korean");
+@import "reset.css";
+@import "input.css";
+@import "info.css";
+@import "play.css";
+@import "result.css";
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.wrap {
+  width: 800px;
+  height: 100%;
+}
+
+.header {
+  margin: 30px 0px;
+  height: 100px;
+  text-align: center;
+}
+
+.header__main-title {
+  font-size: 25px;
+  font-weight: 500;
+  color: #111111;
+  margin-bottom: 30px;
+}
+
+.header__menu {
+  height: 100px;
+}
+
+.header__menu .menu-btn {
+  width: 150px;
+  height: 35px;
+  margin: 0px 10px;
+  border: none;
+  border-radius: 5px;
+  color: #f5f6fa;
+  background: #3498db;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.contents {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contents__container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.input-wrap {
+  width: 800px;
+  display: block;
+}
+
+.info-wrap {
+  width: 800px;
+  display: none;
+}
+.play-wrap {
+  width: 800px;
+  display: none;
+}
+.result-wrap {
+  width: 800px;
+  display: none;
+}

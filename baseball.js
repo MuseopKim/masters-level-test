@@ -144,6 +144,7 @@ function saveData() {
   });
   inputBox.style.display = "none";
   infoBox.style.display = "block";
+  infoBox.style.width = "800px";
 }
 
 // 저장된 정보를 바탕으로 팀과 선수 정보를 출력
@@ -193,6 +194,7 @@ function showAndHideBox(e) {
     infoBox.style.display = "none";
     playBox.style.display = "none";
     inputBox.style.display = "block";
+    inputBox.style.width = "800px";
   } else if (e.target.id === "jsShowInfoBtn") {
     let isFilled = true;
     for (let i = 0; i < 9; i++) {
@@ -205,6 +207,7 @@ function showAndHideBox(e) {
       playBox.style.display = "none";
       inputBox.style.display = "none";
       infoBox.style.display = "block";
+      infoBox.style.width = "800px";
       showInfo();
     } else {
       alert("팀 정보를 먼저 입력 해주세요.");
@@ -213,6 +216,7 @@ function showAndHideBox(e) {
     inputBox.style.display = "none";
     infoBox.style.display = "none";
     playBox.style.display = "block";
+    infoBox.style.display = "800px";
   }
 }
 
@@ -255,6 +259,7 @@ function setFinish() {
 
   const resultBox = document.querySelector("#jsResultBox");
   resultBox.style.display = "block";
+  resultBox.style.display = "800px";
 
   const menu = document.querySelector("#jsMenuBox");
   menu.style.display = "none";
@@ -263,7 +268,7 @@ function setFinish() {
 // 3 아웃시 경기를 종료 시킬지 여부를 결정
 function isFinish() {
   if (match.round === 6 && !match.isSecondHalf) {
-    if (match.team1Score < match.team2Score) {
+    if (match.team1.score < match.team2.score) {
       setFinish();
     } else {
       match.resetStats();
