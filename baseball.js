@@ -169,6 +169,7 @@ function showInfo() {
   team2PitcherName.innerHTML = team2.pitcher;
 }
 
+// 각 팀의 라인업을 경기 화면에 출력
 function showLineUp() {
   const team1PlayerName = document.querySelectorAll(".jsPlayTeam1PlayerName");
   const team2PlayerName = document.querySelectorAll(".jsPlayTeam2PlayerName");
@@ -236,8 +237,7 @@ function showAndHideBox(e) {
     }
   }
   if (e.target.id === "jsShowInputBtn") {
-    infoBox.style.display = "block";
-    infoBox.style.width = "800px";
+    infoBox.style.display = "none";
     playBox.style.display = "none";
     inputBox.style.display = "block";
     inputBox.style.width = "800px";
@@ -347,10 +347,14 @@ match.updateStats = function(judgement) {
     this.ball++;
     comment = "볼!";
   } else if (judgement === "out") {
+    this.strike = 0;
+    this.ball = 0;
     this.out++;
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "아웃!";
   } else if (judgement === "hit") {
+    this.strike = 0;
+    this.ball = 0;
     this.hit++;
     offendTeam.hit++;
     if (this.hit >= 4) {
@@ -374,6 +378,7 @@ match.updateStats = function(judgement) {
     isFinish();
   } else if (this.strike === 3) {
     this.strike = 0;
+    this.ball = 0;
     offendTeam.threeStrike++;
     this.out++;
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
@@ -383,6 +388,7 @@ match.updateStats = function(judgement) {
     }
   }
   if (this.ball === 4) {
+    this.strike = 0;
     this.ball = 0;
     this.hit++;
     offendTeam.hit++;
@@ -415,7 +421,6 @@ function printStats(num, player) {
   const playerInfo = document.querySelector("#jsPlayerInfo");
   const countStrike = document.querySelector("#jsCountStrike");
   const countBall = document.querySelector("#jsCountBall");
-  const countHit = document.querySelector("#jsCountHit");
   const countOut = document.querySelector("#jsCountOut");
   const team1CountPlay = document.querySelector("#jsCountTeam1Play");
   const team2CountPlay = document.querySelector("#jsCountTeam2Play");
@@ -435,7 +440,6 @@ function printStats(num, player) {
 
   countStrike.innerHTML = match.strike;
   countBall.innerHTML = match.ball;
-  countHit.innerHTML = match.hit;
   countOut.innerHTML = match.out;
 
   team1CountPlay.innerHTML = team1.countPlay;
@@ -500,6 +504,29 @@ function playRound() {
   console.log(match.round);
 }
 
+function pressEnter(e) {
+  let isFilled;
+  if (e.key === "Enter") {
+    if (!match.team1) {
+      isFilled = false;
+    } else {
+      for (let i = 0; i < 9; i++) {
+        if (!match.team1.batterPlayers[i] || !match.team2.batterPlayers[i]) {
+          isFilled = false;
+        } else {
+          isFilled = true;
+        }
+      }
+    }
+    if (isFilled) {
+      playRound();
+    } else {
+      this.alert("팀 정보를 먼저 입력 해주세요.");
+    }
+  }
+}
+
+// 사용자가 입력한 라운드만큼 스킵을 진행 : 미구현
 function skipRound() {
   const skipValue = document.querySelector("#jsSkipInput").value;
   const skipUntil = Number(skipValue);
@@ -542,6 +569,8 @@ function main() {
   resetBtn.addEventListener("click", function() {
     location.reload();
   });
+
+  window.addEventListener("keypress", pressEnter);
 }
 
 main();

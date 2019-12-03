@@ -13,22 +13,27 @@
   text-align: center;
 }
 
-.contents__play-score th {
+.contents__play-score .team-name {
   border: 1px solid black;
-  padding: 5px 30px;
-}
-
-.contents__play-score td {
-  border: 1px solid black;
-  padding: 5px 30px;
 }
 
 .contents__play-score .score-list {
   border: 1px solid black;
+  width: 70px;
+  height: 27px;
+  line-height: 27px;
 }
 
-.contents__play-score .team-name {
-  padding: 5px 17px;
+.contents__play-score .round-score {
+  border: 1px solid black;
+  width: 70px;
+  height: 27px;
+  line-height: 27px;
+}
+
+.contents__play-score .score {
+  border: 1px solid black;
+  font-weight: 500;
 }
 
 .contents__play-comment {
