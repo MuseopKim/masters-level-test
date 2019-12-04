@@ -286,7 +286,6 @@ function isFinish() {
 match.updateStats = function(judgement) {
   const commentBox = document.querySelector("#jsJudgement");
   const offendTeam = this.offendTeam;
-
   let comment = "";
 
   if (judgement === "strike") {
@@ -296,32 +295,43 @@ match.updateStats = function(judgement) {
     this.ball++;
     comment = "볼!";
   } else if (judgement === "out") {
+    this.strike = 0;
+    this.ball = 0;
     this.out++;
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "아웃!";
   } else if (judgement === "hit") {
+    this.strike = 0;
+    this.ball = 0;
     this.hit++;
+    if (this.hit >= 4) {
+      offendTeam.score++;
+    }
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "안타!";
   }
+
   if (this.out === 3) {
     isFinish();
   } else if (this.strike === 3) {
     this.strike = 0;
+    this.ball = 0;
     this.out++;
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "삼진 아웃!";
     if (this.out === 3) {
       isFinish();
     }
-  } else if (this.ball === 4) {
+  }
+  if (this.ball === 4) {
+    this.strike = 0;
     this.ball = 0;
     this.hit++;
     this.currentNum === 8 ? (this.currentNum = 0) : this.currentNum++;
     comment = "4볼 안타!";
-  }
-  if (this.hit >= 4) {
-    offendTeam.score++;
+    if (this.hit >= 4) {
+      offendTeam.score++;
+    }
   }
   commentBox.innerHTML = comment;
 };
