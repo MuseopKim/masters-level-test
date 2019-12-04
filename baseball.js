@@ -190,10 +190,7 @@ function showLineUp() {
 // 클릭시 생성한 팀, 경기를 저장
 function saveData() {
   const team1 = setTeam1();
-  console.log(team1);
-
   const team2 = setTeam2();
-  console.log(team2);
 
   match.setMatch(team1, team2);
 
@@ -481,27 +478,6 @@ function playRound() {
 
   team1Score.innerHTML = match.team1.score;
   team2Score.innerHTML = match.team2.score;
-
-  console.log(
-    `Strike: ${match.strike}`,
-    `Ball: ${match.ball}`,
-    `Hit: ${match.hit}`,
-    `Out: ${match.out}`
-  );
-  console.log(
-    `Team1 3Strike: ${match.team1.threeStrike}`,
-    `Team2 3Strike: ${match.team2.threeStrike}`
-  );
-  console.log(`Team1 Hit: ${match.team1.hit}`, `Team2 Hit: ${match.team2.hit}`);
-  console.log(
-    `Team1 Count: ${match.team1.countPlay}`,
-    `Team2 Count: ${match.team2.countPlay}`
-  );
-  console.log(
-    `Team1 Score: ${match.team1.score}`,
-    `Team2 Score: ${match.team2.score}`
-  );
-  console.log(match.round);
 }
 
 function pressEnter(e) {
