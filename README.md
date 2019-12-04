@@ -24,7 +24,7 @@ const match = {
   ball: 0,
   out: 0,
   hit: 0,
-  makeJudgement: function() { ... }, // 랜덤 수를 만들어 홀수 또는 짝수를 판별하고, 그에 따라 Strike 또는 Ball을 발생 시킴
+  makeJudgement: function() { ... }, // 랜덤 수를 만들어 홀수 또는 짝수를 판별하고, 그에 따라 판정을 발생 시킴
   isOutOrHit: function() { ... } // Strike와 Ball이 특정 횟수에 도달하면 Out과 Hit 증가
 };
 ```
