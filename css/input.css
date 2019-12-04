@@ -14,6 +14,7 @@
   width: 60px;
   text-align: center;
   margin: 0 5px 0 3px;
+  font-size: 14px;
 }
 
 .contents__input .input-label2 {
@@ -21,6 +22,7 @@
   width: 35px;
   text-align: center;
   margin: 0 5px 0 21px;
+  font-size: 14px;
 }
 
 .contents__input .team-batter {
@@ -41,7 +43,7 @@
   margin: 30px auto;
   border: none;
   border-radius: 5px;
-  background: #273c75;
+  background: #232a34;
   color: #fff;
   font-weight: 500;
   font-size: 14px;

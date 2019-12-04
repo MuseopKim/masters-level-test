@@ -562,9 +562,6 @@ function main() {
   const playBtn = document.querySelector("#jsPlayBtn");
   playBtn.addEventListener("click", playRound);
 
-  const skipBtn = document.querySelector("#jsSkipBtn");
-  skipBtn.addEventListener("click", skipRound);
-
   const resetBtn = document.querySelector("#jsResetBtn");
   resetBtn.addEventListener("click", function() {
     location.reload();

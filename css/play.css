@@ -1,6 +1,10 @@
 .contents__play-container {
   display: flex;
   justify-content: center;
+  background: #1f375d;
+  border-radius: 5px;
+  color: #f5f6fa;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .contents__play-title {
@@ -8,32 +12,40 @@
 }
 
 .contents__play-score {
-  margin: 0 auto 30px auto;
-  border: 1px solid black;
+  margin: 30px auto 30px auto;
   text-align: center;
+  font-size: 14px;
 }
 
 .contents__play-score .team-name {
-  border: 1px solid black;
+  border: 3px solid #ce3d47;
+  width: 90px;
+  font-weight: 500;
+  color: white;
 }
 
 .contents__play-score .score-list {
-  border: 1px solid black;
+  border: none;
   width: 70px;
   height: 27px;
   line-height: 27px;
+  font-weight: 500;
+  font-size: 17px;
+  color: white;
 }
 
 .contents__play-score .round-score {
-  border: 1px solid black;
+  border: 3px solid #ce3d47;
   width: 70px;
   height: 27px;
   line-height: 27px;
 }
 
 .contents__play-score .score {
-  border: 1px solid black;
+  border: none;
   font-weight: 500;
+  font-size: 17px;
+  color: white;
 }
 
 .contents__play-comment {
@@ -42,7 +54,9 @@
   line-height: 40px;
   margin: 0 auto 30px auto;
   text-align: center;
-  background: blue;
+  border-radius: 7px;
+  font-weight: 500;
+  background: #292f38;
 }
 
 .contents__play-lineup {
@@ -50,36 +64,61 @@
   justify-content: space-between;
   margin-bottom: 30px;
 }
-
+/* #ce3d47 */
 .play__team-table {
-  border: 1px solid black;
+  border: 1px solid #f5f6fa;
   text-align: center;
   font-size: 14px;
+  background: #272727;
 }
 
-.play__team-table td {
-  border: 1px solid black;
-  padding: 5px 7px;
+.play__team-table .play__player-number {
+  border: 1px solid #f5f6fa;
+  width: 42px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
 }
 
 .play__team-table .play__player-name {
-  padding: 5px 15px;
+  border: 1px solid #f5f6fa;
+  width: 70px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+}
+
+.play__team-table .play__accumulated-stat {
+  border: 1px solid #f5f6fa;
+  width: 42px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+}
+
+.play__team-table .play__accumulated-count {
+  border: 1px solid #f5f6fa;
+  width: 42px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
 }
 
 .contents__play-column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .contents__play-judgement {
   width: 120px;
-  height: 30px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 5px;
   font-size: 15px;
-  line-height: 30px;
   text-align: center;
-  background: gray;
+  background: #111727;
 }
 
 .contents__play-player {
@@ -89,7 +128,8 @@
   line-height: 35px;
   font-size: 15px;
   text-align: center;
-  background: orange;
+  border: 3px solid #585b62;
+  border-radius: 5px;
 }
 
 .contents__play-stat {
@@ -98,14 +138,19 @@
   font-size: 14px;
 }
 
-.contents__play-stat th {
-  border: 1px solid black;
-  padding: 5px 7px;
+.contents__play-stat .stat-name {
+  border: 3px solid #f5f6fa;
+  width: 65px;
+  height: 26px;
+  line-height: 26px;
+  font-weight: 500;
 }
 
-.contents__play-stat td {
-  border: 1px solid black;
-  padding: 5px 7px;
+.contents__play-stat .stat-count {
+  border: 3px solid #f5f6fa;
+  width: 65px;
+  height: 26px;
+  line-height: 26px;
 }
 
 .contents__play-btn {
@@ -114,7 +159,7 @@
   text-align: center;
   border: none;
   border-radius: 5px;
-  background: #273c75;
+  background: #bf3437;
   color: #fff;
   font-weight: 500;
   font-size: 14px;
@@ -145,5 +190,4 @@
   height: 30px;
   font-size: 12px;
   background: #fbc531;
-  color: #f5f6fa;
 }
