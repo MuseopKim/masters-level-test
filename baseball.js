@@ -33,14 +33,26 @@ match.makeJudgement = function() {
   let randomNumber = Math.floor(Math.random() * 100 + 1);
   let judgement = "";
 
-  if (randomNumber % 2 === 0) {
-    judgement = "Strike!";
-    printJudgement(judgement);
-    this.strike++;
-  } else {
-    judgement = "Ball!";
-    printJudgement(judgement);
-    this.ball++;
+  if (randomNumber < 51) {
+    if (randomNumber % 2 === 0) {
+      judgement = "Strike!";
+      printJudgement(judgement);
+      this.strike++;
+    } else {
+      judgement = "Ball!";
+      printJudgement(judgement);
+      this.ball++;
+    }
+  } else if (randomNumber <= 100) {
+    if (randomNumber % 2 === 0) {
+      judgement = "안타!";
+      printJudgement(judgement);
+      this.hit++;
+    } else {
+      judgement = "Out!";
+      printJudgement(judgement);
+      this.out++;
+    }
   }
 };
 
@@ -50,6 +62,8 @@ match.isOutOrHit = function() {
 
   if (this.strike === 3) {
     this.out++;
+    this.strike = 0;
+    this.ball = 0;
     judgement = "아웃! 다음 타자가 타석에 입장 했습니다.";
     printJudgement(judgement);
     this.strike = 0;
@@ -57,16 +71,17 @@ match.isOutOrHit = function() {
 
   if (this.ball === 4) {
     this.hit++;
+    this.strike = 0;
+    this.ball = 0;
     judgement = "안타! 다음 타자가 타석에 입장 했습니다.";
     printJudgement(judgement);
-    this.ball = 0;
   }
 };
 
 // 3 아웃 이후 게임이 끝나면 최종 결과를 출력
 function printFinalResult() {
   const comment = document.querySelector("#jsComment");
-  const gameover = "Game Over";
+  const gameover = "3Out! Game Over";
   comment.innerHTML = gameover;
 
   const statsList = document.querySelector("#jsStatsList");
